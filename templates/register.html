@@ -1,0 +1,31 @@
+{% extends 'root.html' %}
+
+{% block title %}
+Register
+{% endblock title %}
+
+{% block documents %}
+<form action="{% url 'REGISTER' %}" method="post" enctype="multipart/form-data">
+    <div class="container">
+        <div class="row">
+            {% for field in form %}
+                    <div class="col">
+                        <label for="formInput#text">
+                            {{field.label}}
+                        </label>
+                        {{field}}
+                        <br>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% csrf_token %}
+    <button type="submit">
+        Register
+    </button>
+</form>
+
+<p style="font-size: 2em;text-align: center;">
+    If you have an account <a href="{% url 'LOGIN' %}">LOG IN</a>
+</p>
+{% endblock documents %}
