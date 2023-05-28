@@ -1,4 +1,4 @@
-This is a full authentication cycle project for Django AUTH from scratch
+This is a full authentication cycle project for Django AUTH with class based views from scratch
 
 You have to fill up some settings in "settings.py", because we removed them for security reasons
 and  if you want to know how to remove them you just need to install "python-decouple" module

@@ -149,9 +149,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # A place for uploaded Images by Users
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = [
-    os.path.join(BASE_DIR, "media"),
-]
+MEDIA_ROOT = BASE_DIR / "media"
 
 
 # TODO : Login, Logout control, you can change these as you please
