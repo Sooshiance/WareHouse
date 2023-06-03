@@ -60,7 +60,7 @@ class UserAccount(AbstractBaseUser):
     first_name  = models.CharField(max_length=75, null=True, blank=True, validators=[alphanumeric])
     last_name   = models.CharField(max_length=75, null=True, blank=True, validators=[alphanumeric])
     phone       = models.CharField(max_length=12, null=True, blank=True, validators=[numbers])
-    pic         = models.ImageField(upload_to="user/")
+    pic         = models.ImageField(upload_to="user/", null=True, blank=True)
     description = models.TextField(max_length=1024, null=True, blank=True)
     created_at  = models.DateTimeField(auto_now_add=True)
     
