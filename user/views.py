@@ -1,8 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import FormView
-from django.contrib.auth.views import (
-    LoginView, LogoutView, PasswordResetView, PasswordResetConfirmView, PasswordResetCompleteView
-)
+from django.contrib.auth.views import (LoginView, LogoutView)
 
 from .models import UserAccount
 from .forms import RegisterForm
@@ -44,22 +42,3 @@ class SignupPageView(FormView):
             # TODO : If you add other fields to your model, include them here
         )
         return super().form_valid(form)
-
-
-class PasswordChangePageView(PasswordResetView):
-    template_name ="pass_change.html"
-    email_template_name = "pass_change_email.html"
-    subject_template_name = "password_reset_subject.txt"
-    success_message ="""  We've emailed you instructions for setting your password,
-                      if an account exists with the email you entered. You should receive them shortly.
-                      If you don't receive an email,
-                      please make sure you've entered the address you registered with, and check your spam folder. """
-    success_url = reverse_lazy("/")
-
-
-class PasswordResetConfirmViewPage(PasswordResetConfirmView):
-    template_name = "password_reset_confirm.html"
-
-
-class PasswordResetCompleteViewPage(PasswordResetCompleteView):
-    template_name = "password_reset_complete.html"
