@@ -10,9 +10,9 @@ class IsCustomer(permissions.BasePermission):
         return ValidationError("Not Customer")
 
 
-class IsVendor(permissions.BasePermission):
+class IsSupplier(permissions.BasePermission):
 
     def has_permission(self, request, view):
         if request.user.is_authenticated and request.user.role == 2:
             return True
-        raise ValidationError("Not Vendor")
+        raise ValidationError("Not Supplier")
