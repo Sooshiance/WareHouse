@@ -6,7 +6,7 @@ from .models import User, Profile
 
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        user=instance
+        user:User = instance
         new_profile = Profile.objects.create(
             user=user,
             email=user.email,
@@ -14,19 +14,21 @@ def create_profile(sender, instance, created, **kwargs):
             username= user.username,
             first_name=user.first_name,
             last_name=user.last_name,
+            role=user.role,
         )
 
 
 @receiver(pre_save, sender=Profile)
-def update_user(sender, instance, **kwargs):
+def update_user(sender, instance:Profile, **kwargs):
     if instance.pk:
-        user = instance.user
+        user:User = instance.user
         user.phone = instance.phone
         user.is_private = instance.is_private
         user.username = instance.username
         user.email = instance.email
         user.first_name = instance.first_name
         user.last_name = instance.last_name
+        user.role = instance.role
         user.save()
         
 

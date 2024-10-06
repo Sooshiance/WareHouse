@@ -4,6 +4,8 @@ from django.contrib.auth.models import (BaseUserManager,
                                         AbstractBaseUser,
                                         PermissionsMixin,)
 
+from .enums import Role
+
 
 class AllUser(BaseUserManager):
     def create_user(self, username, email, phone, password=None, first_name=None, last_name=None):
@@ -78,6 +80,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff     = models.BooleanField(default=False, null=False)
     is_superuser = models.BooleanField(default=False, null=False)
 
+    role         = models.PositiveSmallIntegerField(default=1, choices=Role.choices())
+
     objects = AllUser()
 
     USERNAME_FIELD  = 'email'
@@ -109,6 +113,8 @@ class Profile(models.Model):
     website         = models.URLField(blank=True, null=True)
     location        = models.CharField(max_length=144, blank=True, null=True)
     birth_date      = models.DateField(blank=True, null=True)
+
+    role            = models.PositiveSmallIntegerField(default=1, choices=Role.choices())
 
     def __str__(self):
         return self.user.username

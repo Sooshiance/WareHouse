@@ -17,6 +17,11 @@ class RegisterUserGenericAPIView(generics.ListCreateAPIView):
     serializer_class = RegisterSerializer
     queryset = User.objects.all()
 
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        instance.set_password(instance.password)
+        instance.save()
+
 
 class ProfileGenericAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]
