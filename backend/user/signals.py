@@ -23,12 +23,10 @@ def update_user(sender, instance:Profile, **kwargs):
     if instance.pk:
         user:User = instance.user
         user.phone = instance.phone
-        user.is_private = instance.is_private
         user.username = instance.username
         user.email = instance.email
         user.first_name = instance.first_name
         user.last_name = instance.last_name
-        user.role = instance.role
         user.save()
         
 
