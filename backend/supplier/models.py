@@ -6,7 +6,7 @@ from user.models import User
 
 
 class Supplier(models.Model):
-    user           = models.OneToOneField(User, on_delete=models.CASCADE)
+    user           = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_supplier')
     company_name   = models.CharField(max_length=255)
     contact_number = models.CharField(max_length=11)
     address        = models.CharField(max_length=255)
