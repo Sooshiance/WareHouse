@@ -28,6 +28,8 @@ urlpatterns = [
     path("api/supplier/", include("supplier.urls")),
 
     path("api/warehouse/", include("warehouse.urls")),
+
+    path("api/customer/", include("customer.urls")),
 ]
 
 
