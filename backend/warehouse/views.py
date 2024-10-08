@@ -8,6 +8,8 @@ from .serializers import (WarehouseSerializer,
                           CategorySerializer,
                           ProductSerializer,)
 
+from supplier.permissions import CanSupply
+
 
 class WareHouseGenericAPIView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAdminUser]
@@ -73,3 +75,12 @@ class ProductDetailGenericAPIView(generics.RetrieveUpdateDestroyAPIView):
             return Product.objects.get(sku=sku)
         except Exception as e:
             raise ValidationError("No Product found!")
+
+
+class SupplierProductGenericAPIView(generics.ListAPIView):
+    permission_classes = [CanSupply]
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        p = Product.objects.filter(can_supply=True)
+        return p

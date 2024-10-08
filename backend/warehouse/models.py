@@ -36,13 +36,11 @@ class Product(models.Model):
     price          = models.DecimalField(max_digits=10, decimal_places=2)
     stock_quantity = models.IntegerField()
     is_active      = models.BooleanField(default=True)
+    can_supply     = models.BooleanField(default=False)
     sku            = ShortUUIDField(max_length=20, db_index=True, unique=True, alphabet="0123456789abcdefghij")
 
     def activeProduct(self):
         return Product.objects.filter(is_active=True)
-    
-    def approvedSupplier(self):
-        return 
 
     def __str__(self):
         return f"{self.supplier.user.username} can supplies {self.name} from {self.category.title}"
