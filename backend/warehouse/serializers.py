@@ -1,8 +1,6 @@
 from rest_framework import serializers
 
-from .models import (Warehouse,
-                     Category,
-                     Product)
+from .models import Warehouse, Category, Product
 
 from supplier.serializers import SupplierSerializer
 
@@ -25,4 +23,4 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        exclude = ['sku', 'is_active']
+        exclude = ["sku", "is_active"]

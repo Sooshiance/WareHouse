@@ -10,4 +10,4 @@ class CustomerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Customer
-        exclude = ['role']
+        exclude = ["role"]

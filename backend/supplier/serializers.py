@@ -7,7 +7,7 @@ from user.serializers import UserSerializer
 
 class SupplierSerializer(serializers.ModelSerializer):
     user = UserSerializer()
-    
+
     class Meta:
         model = Supplier
-        exclude = ['sku', 'is_approved']
+        exclude = ["sku", "is_approved"]

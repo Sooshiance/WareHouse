@@ -3,7 +3,6 @@ from rest_framework.exceptions import ValidationError
 
 
 class IsCustomer(permissions.BasePermission):
-
     def has_permission(self, request, view):
         if request.user.is_authenticated and request.user.role == 1:
             return True
@@ -11,7 +10,6 @@ class IsCustomer(permissions.BasePermission):
 
 
 class IsSupplier(permissions.BasePermission):
-
     def has_permission(self, request, view):
         if request.user.is_authenticated and request.user.role == 2:
             return True

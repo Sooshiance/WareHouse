@@ -7,9 +7,9 @@ from .models import User, Supplier
 @receiver(pre_save, sender=User)
 def create_supplier(sender, instance, created, **kwargs):
     if created:
-        user:User = instance
+        user: User = instance
         if user.role == 2:
             new_supplier = Supplier.objects.create(
-            user=user,
-            contact_number=user.phone,
+                user=user,
+                contact_number=user.phone,
             )

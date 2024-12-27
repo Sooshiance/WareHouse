@@ -1,12 +1,12 @@
 from rest_framework import generics, permissions
-from rest_framework.exceptions import ValidationError
+from rest_framework.exceptions import ValidationError, NotFound
 
-from .models import (Warehouse,
-                     Category,
-                     Product)
-from .serializers import (WarehouseSerializer,
-                          CategorySerializer,
-                          ProductSerializer,)
+from .models import Warehouse, Category, Product
+from .serializers import (
+    WarehouseSerializer,
+    CategorySerializer,
+    ProductSerializer,
+)
 
 from supplier.permissions import CanSupply
 
@@ -22,15 +22,15 @@ class WareHouseDetailGenericAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = WarehouseSerializer
 
     def get_object(self):
-        sku = self.kwargs['sku']
+        sku = self.kwargs["sku"]
         return sku
-    
+
     def get_queryset(self):
         sku = self.get_object()
         try:
             return Warehouse.objects.get(sku=sku)
-        except Exception as e:
-            raise ValidationError("No WareHouse found!")
+        except NotFound as e:
+            raise ValidationError(str(e))
 
 
 class CategoryGenericAPIView(generics.ListCreateAPIView):
@@ -44,15 +44,15 @@ class CategoryDetailGenericAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CategorySerializer
 
     def get_object(self):
-        sku = self.kwargs['sku']
+        sku = self.kwargs["sku"]
         return sku
-    
+
     def get_queryset(self):
         sku = self.get_object()
         try:
             return Category.objects.get(sku=sku)
-        except Exception as e:
-            raise ValidationError("No Category found!")
+        except NotFound as e:
+            raise ValidationError(str(e))
 
 
 class ProductGenericAPIView(generics.ListCreateAPIView):
@@ -66,15 +66,15 @@ class ProductDetailGenericAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductSerializer
 
     def get_object(self):
-        sku = self.kwargs['sku']
+        sku = self.kwargs["sku"]
         return sku
-    
+
     def get_queryset(self):
         sku = self.get_object()
         try:
             return Product.objects.get(sku=sku)
-        except Exception as e:
-            raise ValidationError("No Product found!")
+        except NotFound as e:
+            raise ValidationError(str(e))
 
 
 class SupplierProductGenericAPIView(generics.ListAPIView):

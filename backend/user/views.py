@@ -2,9 +2,11 @@ from rest_framework import generics, response, status, permissions
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .models import User, Profile
-from .serializers import (RegisterSerializer,
-                          ProfileSerializer,
-                          CustomTokenObtainPairSerializer,)
+from .serializers import (
+    RegisterSerializer,
+    ProfileSerializer,
+    CustomTokenObtainPairSerializer,
+)
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):

@@ -1,10 +1,10 @@
 from django.urls import path
 
-from .views import SupplierGenericAPIVIew
+from .views import SupplierGenericAPIView
 
 
 app_name = "supplier"
 
 urlpatterns = [
-    path("verify/", SupplierGenericAPIVIew.as_view()),
+    path("verify/", SupplierGenericAPIView.as_view()),
 ]

@@ -7,4 +7,4 @@ class Role(Enum):
 
     @classmethod
     def choices(cls):
-        return [(key.value, key.name.replace('_', ' ')) for key in cls]
+        return [(key.value, key.name.replace("_", " ")) for key in cls]

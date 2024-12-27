@@ -6,7 +6,7 @@ from .serializers import SupplierSerializer
 from user.permissions import IsSupplier
 
 
-class SupplierGenericAPIVIew(generics.RetrieveUpdateDestroyAPIView):
+class SupplierGenericAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsSupplier]
     serializer_class = SupplierSerializer
 
